@@ -41,10 +41,42 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="ImageApp\" />
+    <Folder Include="ImageApp\models\" />
+    <Folder Include="ImageApp\static\content\" />
+    <Folder Include="ImageApp\static\fonts\" />
+    <Folder Include="ImageApp\static\scripts\" />
+    <Folder Include="ImageApp\static\" />
     <Folder Include="ImageApp\Templates\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="ImageApp\Templates\Main.html" />
+    <Page Include="ImageApp\Templates\index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ImageApp\models\bearPenguinModel.pkl" />
+    <Content Include="ImageApp\static\content\bootstrap.css" />
+    <Content Include="ImageApp\static\content\bootstrap.min.css" />
+    <Content Include="ImageApp\static\content\site.css" />
+    <Content Include="ImageApp\static\fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="ImageApp\static\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="ImageApp\static\fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="ImageApp\static\fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="ImageApp\static\scripts\appScript.js" />
+    <Content Include="ImageApp\static\scripts\bootstrap.js" />
+    <Content Include="ImageApp\static\scripts\bootstrap.min.js" />
+    <Content Include="ImageApp\static\scripts\jquery-1.10.2.js" />
+    <Content Include="ImageApp\static\scripts\jquery-1.10.2.min.js" />
+    <Content Include="ImageApp\static\scripts\jquery-1.10.2.min.map" />
+    <Content Include="ImageApp\static\scripts\modernizr-2.6.2.js" />
+    <Content Include="ImageApp\static\scripts\respond.js" />
+    <Content Include="ImageApp\static\scripts\respond.min.js" />
+    <None Include="ImageApp\static\scripts\jquery-1.10.2.intellisense.js" />
+    <None Include="ImageApp\static\scripts\jquery.validate-vsdoc.js" />
+    <Content Include="ImageApp\static\scripts\jquery.validate.js" />
+    <Content Include="ImageApp\static\scripts\jquery.validate.min.js" />
+    <Content Include="ImageApp\static\scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="ImageApp\static\scripts\jquery.validate.unobtrusive.min.js" />
+    <None Include="ImageApp\static\scripts\_references.js" />
+    <Content Include="ImageApp\Templates\layout.html" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.Web.targets" />
   <!-- Specify pre- and post-build commands in the BeforeBuild and 

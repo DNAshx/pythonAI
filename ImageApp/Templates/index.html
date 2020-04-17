@@ -1,0 +1,16 @@
+﻿{% extends "layout.html" %}
+
+{% block content %}
+
+<!--<input type="file" id="fileElem" multiple accept="image/*" style="display:none">
+<a href="#" id="fileSelect">Select some files</a>
+<div id="fileList">
+    <p>No files selected!</p>
+</div>-->
+<input type='file' />
+<img id="myImg" src="#" alt="your image" />
+<input type="text" id="lcategory" name="lcategory" readonly>
+{% endblock %}
+{% block scripts %}
+<script src="/static/scripts/appScript.js"></script>
+{% endblock %}

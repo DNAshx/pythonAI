@@ -1,33 +1,29 @@
-import io
-import pygame as pg
-try:
-    # Python2
-    from urllib2 import urlopen
-except ImportError:
-    # Python3
-    from urllib.request import urlopen
-# initialize pygame
-pg.init()
-# on a webpage right click on the image you want and use Copy image URL
-image_url = "http://matplotlib.org/_images/fill_demo.png"
-image_str = urlopen(image_url).read()
-# create a file object (stream)
-image_file = io.BytesIO(image_str)
-# (r, g, b) color tuple, values 0 to 255
-white = (255, 255, 255)
-# create a 600x400 white screen
-screen = pg.display.set_mode((600,400),  pg.RESIZABLE )
-screen.fill(white)
-# load the image from a file or stream
-image = pg.image.load(image_file)
-# draw image, position the image ulc at x=20, y=20
-screen.blit(image, (20, 20))
-# nothing gets displayed until one updates the screen
-pg.display.flip()
-# start event loop and wait until
-# the user clicks on the window corner x to exit
-while True:
-    for event in pg.event.get():
-        if event.type == pg.QUIT:
-            pg.quit()
-            raise SystemExit
+from flask import Flask, request, jsonify
+from fastai.basic_train import load_learner
+from fastai.vision import open_image
+from flask_cors import CORS,cross_origin
+from ImageApp import app
+CORS(app, support_credentials=True)
+
+# load the learner
+learn = load_learner(path='./ImageApp/models', file='bearPenguinModel.pkl')
+classes = learn.data.classes
+
+
+def predict_single(img_file):
+    'function to take image and return prediction'
+    prediction = learn.predict(open_image(img_file))
+    probs_list = prediction[2].numpy()
+    return {
+        'category': classes[prediction[1].item()],
+        'probs': {c: round(float(probs_list[i]), 5) for (i, c) in enumerate(classes)}
+    }
+
+
+# route for prediction
+@app.route('/predict', methods=['POST'])
+def predict():
+    return jsonify(predict_single(request.files['image']))
+
+if __name__ == '__main__':
+    app.run()
